@@ -106,6 +106,8 @@
     <Compile Include="GetFfmpegLocation.Designer.cs">
       <DependentUpon>GetFfmpegLocation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\FfmpegRequest.cs" />
+    <Compile Include="Models\FfmpegResult.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

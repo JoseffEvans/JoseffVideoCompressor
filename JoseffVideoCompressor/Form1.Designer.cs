@@ -57,14 +57,20 @@
             this._aspectRatioWidth = new System.Windows.Forms.TextBox();
             this._aspectRatioHeight = new System.Windows.Forms.TextBox();
             this._audioOnly = new System.Windows.Forms.CheckBox();
-            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.SetEndButton = new System.Windows.Forms.Button();
             this.SetTimeButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this._lblExecuting = new System.Windows.Forms.Label();
-            this._startEndTime = new JoseffVideoCompressor.StartEndDate();
             this._prev = new System.Windows.Forms.Button();
             this._next = new System.Windows.Forms.Button();
+            this._executeError = new System.Windows.Forms.Label();
+            this._viewOutput = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this._fps = new System.Windows.Forms.TextBox();
+            this._interpolateFramerate = new System.Windows.Forms.CheckBox();
+            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            this._startEndTime = new JoseffVideoCompressor.StartEndDate();
+            this._gif = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +80,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this._fileInput.Location = new System.Drawing.Point(12, 24);
             this._fileInput.Name = "_fileInput";
-            this._fileInput.Size = new System.Drawing.Size(615, 20);
+            this._fileInput.Size = new System.Drawing.Size(842, 20);
             this._fileInput.TabIndex = 0;
             this._fileInput.TextChanged += new System.EventHandler(this.FileInput_TextChanged);
             this._fileInput.Leave += new System.EventHandler(this.FileInput_Leave);
@@ -85,7 +91,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this._fileOutput.Location = new System.Drawing.Point(12, 121);
             this._fileOutput.Name = "_fileOutput";
-            this._fileOutput.Size = new System.Drawing.Size(779, 20);
+            this._fileOutput.Size = new System.Drawing.Size(1006, 20);
             this._fileOutput.TabIndex = 1;
             this._fileOutput.TextChanged += new System.EventHandler(this.FileOutput_TextChanged);
             this._fileOutput.Leave += new System.EventHandler(this.FileOutput_Leave);
@@ -148,8 +154,9 @@
             // 
             // _exec
             // 
+            this._exec.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this._exec.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this._exec.Location = new System.Drawing.Point(7, 379);
+            this._exec.Location = new System.Drawing.Point(7, 486);
             this._exec.Name = "_exec";
             this._exec.Size = new System.Drawing.Size(131, 45);
             this._exec.TabIndex = 8;
@@ -170,7 +177,7 @@
             // _updateDefault
             // 
             this._updateDefault.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._updateDefault.Location = new System.Drawing.Point(646, 92);
+            this._updateDefault.Location = new System.Drawing.Point(873, 92);
             this._updateDefault.Name = "_updateDefault";
             this._updateDefault.Size = new System.Drawing.Size(145, 23);
             this._updateDefault.TabIndex = 10;
@@ -185,7 +192,7 @@
             this._defaltDirOutput.Location = new System.Drawing.Point(413, 92);
             this._defaltDirOutput.Name = "_defaltDirOutput";
             this._defaltDirOutput.ReadOnly = true;
-            this._defaltDirOutput.Size = new System.Drawing.Size(227, 20);
+            this._defaltDirOutput.Size = new System.Drawing.Size(454, 20);
             this._defaltDirOutput.TabIndex = 11;
             this._defaltDirOutput.TextChanged += new System.EventHandler(this.DefaltDirOutput_TextChanged);
             // 
@@ -346,22 +353,10 @@
             this._audioOnly.Text = "Audio Only (mp3)";
             this._audioOnly.UseVisualStyleBackColor = true;
             // 
-            // axWindowsMediaPlayer1
-            // 
-            this.axWindowsMediaPlayer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(534, 182);
-            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
-            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(257, 191);
-            this.axWindowsMediaPlayer1.TabIndex = 32;
-            // 
             // SetEndButton
             // 
             this.SetEndButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SetEndButton.Location = new System.Drawing.Point(704, 379);
+            this.SetEndButton.Location = new System.Drawing.Point(931, 486);
             this.SetEndButton.Name = "SetEndButton";
             this.SetEndButton.Size = new System.Drawing.Size(75, 23);
             this.SetEndButton.TabIndex = 31;
@@ -372,7 +367,7 @@
             // SetTimeButton
             // 
             this.SetTimeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SetTimeButton.Location = new System.Drawing.Point(623, 379);
+            this.SetTimeButton.Location = new System.Drawing.Point(850, 486);
             this.SetTimeButton.Name = "SetTimeButton";
             this.SetTimeButton.Size = new System.Drawing.Size(75, 23);
             this.SetTimeButton.TabIndex = 30;
@@ -384,7 +379,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(565, 384);
+            this.label9.Location = new System.Drawing.Point(792, 491);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 13);
             this.label9.TabIndex = 33;
@@ -392,26 +387,20 @@
             // 
             // _lblExecuting
             // 
+            this._lblExecuting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this._lblExecuting.AutoSize = true;
             this._lblExecuting.ForeColor = System.Drawing.Color.DarkGreen;
-            this._lblExecuting.Location = new System.Drawing.Point(144, 395);
+            this._lblExecuting.Location = new System.Drawing.Point(144, 488);
             this._lblExecuting.Name = "_lblExecuting";
             this._lblExecuting.Size = new System.Drawing.Size(117, 13);
             this._lblExecuting.TabIndex = 34;
             this._lblExecuting.Text = "Executing, Please Wait";
             this._lblExecuting.Visible = false;
             // 
-            // _startEndTime
-            // 
-            this._startEndTime.Location = new System.Drawing.Point(7, 189);
-            this._startEndTime.Name = "_startEndTime";
-            this._startEndTime.Size = new System.Drawing.Size(358, 115);
-            this._startEndTime.TabIndex = 17;
-            // 
             // _prev
             // 
             this._prev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._prev.Location = new System.Drawing.Point(633, 23);
+            this._prev.Location = new System.Drawing.Point(860, 23);
             this._prev.Name = "_prev";
             this._prev.Size = new System.Drawing.Size(75, 23);
             this._prev.TabIndex = 35;
@@ -422,7 +411,7 @@
             // _next
             // 
             this._next.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._next.Location = new System.Drawing.Point(715, 23);
+            this._next.Location = new System.Drawing.Point(942, 23);
             this._next.Name = "_next";
             this._next.Size = new System.Drawing.Size(75, 23);
             this._next.TabIndex = 36;
@@ -430,12 +419,98 @@
             this._next.UseVisualStyleBackColor = true;
             this._next.Click += new System.EventHandler(this.Next_Click);
             // 
+            // _executeError
+            // 
+            this._executeError.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._executeError.AutoSize = true;
+            this._executeError.ForeColor = System.Drawing.Color.Red;
+            this._executeError.Location = new System.Drawing.Point(144, 489);
+            this._executeError.Name = "_executeError";
+            this._executeError.Size = new System.Drawing.Size(101, 13);
+            this._executeError.TabIndex = 39;
+            this._executeError.Text = "Error, Check Output";
+            this._executeError.Visible = false;
+            // 
+            // _viewOutput
+            // 
+            this._viewOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._viewOutput.Location = new System.Drawing.Point(144, 508);
+            this._viewOutput.Name = "_viewOutput";
+            this._viewOutput.Size = new System.Drawing.Size(117, 23);
+            this._viewOutput.TabIndex = 40;
+            this._viewOutput.Text = "View Output";
+            this._viewOutput.UseVisualStyleBackColor = true;
+            this._viewOutput.Click += new System.EventHandler(this.ViewOutput_Click);
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(324, 426);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(27, 13);
+            this.label10.TabIndex = 41;
+            this.label10.Text = "Fps:";
+            // 
+            // _fps
+            // 
+            this._fps.Location = new System.Drawing.Point(353, 423);
+            this._fps.Name = "_fps";
+            this._fps.Size = new System.Drawing.Size(40, 20);
+            this._fps.TabIndex = 42;
+            this._fps.Text = "60";
+            // 
+            // _interpolateFramerate
+            // 
+            this._interpolateFramerate.AutoSize = true;
+            this._interpolateFramerate.Location = new System.Drawing.Point(399, 425);
+            this._interpolateFramerate.Name = "_interpolateFramerate";
+            this._interpolateFramerate.Size = new System.Drawing.Size(126, 17);
+            this._interpolateFramerate.TabIndex = 43;
+            this._interpolateFramerate.Text = "Interpolate Framerate";
+            this._interpolateFramerate.UseVisualStyleBackColor = true;
+            // 
+            // axWindowsMediaPlayer1
+            // 
+            this.axWindowsMediaPlayer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.axWindowsMediaPlayer1.Enabled = true;
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(534, 182);
+            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
+            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(484, 298);
+            this.axWindowsMediaPlayer1.TabIndex = 32;
+            // 
+            // _startEndTime
+            // 
+            this._startEndTime.Location = new System.Drawing.Point(7, 189);
+            this._startEndTime.Name = "_startEndTime";
+            this._startEndTime.Size = new System.Drawing.Size(358, 115);
+            this._startEndTime.TabIndex = 17;
+            // 
+            // _gif
+            // 
+            this._gif.AutoSize = true;
+            this._gif.Location = new System.Drawing.Point(324, 158);
+            this._gif.Name = "_gif";
+            this._gif.Size = new System.Drawing.Size(39, 17);
+            this._gif.TabIndex = 44;
+            this._gif.Text = "Gif";
+            this._gif.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 442);
+            this.ClientSize = new System.Drawing.Size(1030, 549);
+            this.Controls.Add(this._gif);
+            this.Controls.Add(this._interpolateFramerate);
+            this.Controls.Add(this._fps);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this._viewOutput);
+            this.Controls.Add(this._executeError);
             this.Controls.Add(this._next);
             this.Controls.Add(this._prev);
             this.Controls.Add(this._lblExecuting);
@@ -522,6 +597,12 @@
         private System.Windows.Forms.Label _lblExecuting;
         private System.Windows.Forms.Button _prev;
         private System.Windows.Forms.Button _next;
+        private System.Windows.Forms.Label _executeError;
+        private System.Windows.Forms.Button _viewOutput;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox _fps;
+        private System.Windows.Forms.CheckBox _interpolateFramerate;
+        private System.Windows.Forms.CheckBox _gif;
     }
 }
 

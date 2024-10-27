@@ -12,8 +12,6 @@ namespace JoseffVideoCompressor
         readonly ISettingManager _settingManager;
         readonly IPathValidator _pathValidator;
 
-
-
         public GetFfmpegLocation(ISettingManager settingManager, IPathValidator pathValidator)
         {
             InitializeComponent();
@@ -21,16 +19,15 @@ namespace JoseffVideoCompressor
             _pathValidator = pathValidator;
         }
 
-
         private void FindFfmpegPath_Click(object sender, EventArgs e)
         {
             if(openFileDialog2.ShowDialog() == DialogResult.OK)
                 FfmpegPathTextbox.Text = openFileDialog2.FileName;
         }
 
-
         private void SaveFfmpegLocation_Click(object sender, EventArgs e)
         {
+            FfmpegPathTextbox.Text = FfmpegPathTextbox.Text.Trim('"');
             if (_pathValidator.ValidFfmpegPath(FfmpegPathTextbox.Text))
             {
                 SaveFfmpegPath(FfmpegPathTextbox.Text);
@@ -39,7 +36,6 @@ namespace JoseffVideoCompressor
             else
                 ErrorFfmpegPath.Visible = true;
         }
-
 
         private void SaveFfmpegPath(string path)
         {
