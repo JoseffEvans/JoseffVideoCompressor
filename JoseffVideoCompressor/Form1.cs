@@ -331,8 +331,6 @@ namespace JoseffVideoCompressor {
 
         private void ViewOutput_Click(object sender, EventArgs e) {
             MessageBox.Show(
-                $"Last Output" +
-                "\n-------------------------------------------------------------------------\n" +
                 _lastOutput
             );
         }

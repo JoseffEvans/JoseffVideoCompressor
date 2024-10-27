@@ -66,7 +66,7 @@ namespace JoseffVideoCompressor.Services {
                     }
                 };
 
-                string outputString = $"----Input----\nCommmand: \n ${compressionString} \n----Output----";
+                string outputString = $"----Input----\nCommmand: \n ${compressionString} \n\n----Output----\n";
 
                 process.OutputDataReceived += (sender, args) => outputString += $"{args.Data}\n";
                 process.ErrorDataReceived += (sender, args) => {
