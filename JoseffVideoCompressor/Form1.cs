@@ -287,8 +287,8 @@ namespace JoseffVideoCompressor {
                         _aspectRatioHeight.Text = probe.AspectRatioHeight.ToString();
                         SetResButtons();
 
-                        _width.Text = $"{probe.AspectRatioWidth * RES2_MULTIPLIER}";
-                        _height.Text = $"{probe.AspectRatioHeight * RES2_MULTIPLIER}";
+                        _width.Text = probe.Width.ToString();
+                        _height.Text = probe.Height.ToString();
 
                         if(probe.Duration != default)
                             _startEndTime.SetEndTime(new DateTime(2000, 1, 1, probe.Duration.Hours, probe.Duration.Minutes, probe.Duration.Seconds));
