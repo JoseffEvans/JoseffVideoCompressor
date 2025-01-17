@@ -23,7 +23,8 @@ namespace JoseffVideoCompressor.Services
                 Settings settings = new Settings()
                 {
                     AspectRatioWidth = 16,
-                    AspectRatioHeight = 9
+                    AspectRatioHeight = 9,
+                    FfmpegFileDirectory = @".\ffmpeg\"
                 };
                 SetSettings(settings);
             }
