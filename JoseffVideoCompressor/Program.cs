@@ -13,12 +13,9 @@ namespace JoseffVideoCompressor
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            IPathValidator pathValidator = new PathValidator();
             ISettingManager settings = new SettingManager();
-            IFfmpeg ffmpeg = new Ffmpeg(settings, pathValidator);
+            IFfmpeg ffmpeg = new Ffmpeg(settings);
 
-            if(!ffmpeg.CurrentFfmpegPathValid)
-                Application.Run(new GetFfmpegLocation(settings, pathValidator));
             Application.Run(new Form1(settings, ffmpeg));
         }
     }

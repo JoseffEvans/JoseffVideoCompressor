@@ -1,15 +1,10 @@
 ﻿using JoseffVideoCompressor.Models;
 using JoseffVideoCompressor.Services.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace JoseffVideoCompressor {
@@ -41,6 +36,8 @@ namespace JoseffVideoCompressor {
             _aspectRatioWidth.Text = settings.AspectRatioWidth.ToString();
             _width.Text = (int.Parse(_aspectRatioWidth.Text) * RES2_MULTIPLIER).ToString();
             _height.Text = (int.Parse(_aspectRatioHeight.Text) * RES2_MULTIPLIER).ToString();
+            _ffmpegDirectory.Text = _ffmpeg.FfmpegDirectory;
+            _validFfmpegDirectory.Visible = !_ffmpeg.ValidFfmpegDirectory;
             SetResButtons();
         }
 
@@ -259,7 +256,8 @@ namespace JoseffVideoCompressor {
             try {
                 _exec.Enabled = Directory.Exists(_fileOutput.Text) &&
                     !string.IsNullOrEmpty(_outputFileName.Text) &&
-                    File.Exists(_fileInput.Text);
+                    File.Exists(_fileInput.Text) &&
+                    _ffmpeg.ValidFfmpegDirectory;
             } catch(Exception) {
                 _exec.Enabled = false;
             }
@@ -278,11 +276,26 @@ namespace JoseffVideoCompressor {
         public bool SetContent(string url) {
             bool success = true;
 
-            if(ValidContent(url))
+            if(ValidContent(url)) {
                 axWindowsMediaPlayer1.URL = url;
-            else
-                success = false;
+                _ffmpeg.TryProbe(url, (ProbeResult probe) => {
+                    Invoke((MethodInvoker)delegate {
+                        if(probe is null)
+                            return;
 
+                        _aspectRatioWidth.Text = probe.AspectRatioWidth.ToString();
+                        _aspectRatioHeight.Text = probe.AspectRatioHeight.ToString();
+                        SetResButtons();
+
+                        _width.Text = $"{probe.AspectRatioWidth * RES2_MULTIPLIER}";
+                        _height.Text = $"{probe.AspectRatioHeight * RES2_MULTIPLIER}";
+
+                        if(probe.Duration != default)
+                            _startEndTime.SetEndTime(new DateTime(2000, 1, 1, probe.Duration.Hours, probe.Duration.Minutes, probe.Duration.Seconds));
+                    });
+                });
+            } else
+                success = false;
             return success;
         }
 
@@ -333,6 +346,11 @@ namespace JoseffVideoCompressor {
             MessageBox.Show(
                 _lastOutput
             );
+        }
+
+        private void _ffmpegDirectory_Leave(object sender, EventArgs e) {
+            _ffmpeg.FfmpegDirectory = _ffmpegDirectory.Text;
+            _validFfmpegDirectory.Visible = !_ffmpeg.ValidFfmpegDirectory;
         }
     }
 }

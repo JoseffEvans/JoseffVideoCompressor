@@ -68,9 +68,12 @@
             this.label10 = new System.Windows.Forms.Label();
             this._fps = new System.Windows.Forms.TextBox();
             this._interpolateFramerate = new System.Windows.Forms.CheckBox();
-            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this._startEndTime = new JoseffVideoCompressor.StartEndDate();
             this._gif = new System.Windows.Forms.CheckBox();
+            this._ffmpegDirectory = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            this._validFfmpegDirectory = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,7 +81,7 @@
             // 
             this._fileInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._fileInput.Location = new System.Drawing.Point(12, 24);
+            this._fileInput.Location = new System.Drawing.Point(12, 57);
             this._fileInput.Name = "_fileInput";
             this._fileInput.Size = new System.Drawing.Size(842, 20);
             this._fileInput.TabIndex = 0;
@@ -89,7 +92,7 @@
             // 
             this._fileOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._fileOutput.Location = new System.Drawing.Point(12, 121);
+            this._fileOutput.Location = new System.Drawing.Point(12, 130);
             this._fileOutput.Name = "_fileOutput";
             this._fileOutput.Size = new System.Drawing.Size(1006, 20);
             this._fileOutput.TabIndex = 1;
@@ -99,7 +102,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 8);
+            this.label1.Location = new System.Drawing.Point(12, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(185, 13);
             this.label1.TabIndex = 2;
@@ -108,7 +111,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 69);
+            this.label2.Location = new System.Drawing.Point(12, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(159, 13);
             this.label2.TabIndex = 3;
@@ -144,7 +147,7 @@
             // 
             // _updateOutputDirToInput
             // 
-            this._updateOutputDirToInput.Location = new System.Drawing.Point(15, 92);
+            this._updateOutputDirToInput.Location = new System.Drawing.Point(15, 101);
             this._updateOutputDirToInput.Name = "_updateOutputDirToInput";
             this._updateOutputDirToInput.Size = new System.Drawing.Size(145, 23);
             this._updateOutputDirToInput.TabIndex = 7;
@@ -166,7 +169,7 @@
             // 
             // _loadDefault
             // 
-            this._loadDefault.Location = new System.Drawing.Point(262, 92);
+            this._loadDefault.Location = new System.Drawing.Point(262, 101);
             this._loadDefault.Name = "_loadDefault";
             this._loadDefault.Size = new System.Drawing.Size(145, 23);
             this._loadDefault.TabIndex = 9;
@@ -177,7 +180,7 @@
             // _updateDefault
             // 
             this._updateDefault.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._updateDefault.Location = new System.Drawing.Point(873, 92);
+            this._updateDefault.Location = new System.Drawing.Point(873, 101);
             this._updateDefault.Name = "_updateDefault";
             this._updateDefault.Size = new System.Drawing.Size(145, 23);
             this._updateDefault.TabIndex = 10;
@@ -189,7 +192,7 @@
             // 
             this._defaltDirOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._defaltDirOutput.Location = new System.Drawing.Point(413, 92);
+            this._defaltDirOutput.Location = new System.Drawing.Point(413, 101);
             this._defaltDirOutput.Name = "_defaltDirOutput";
             this._defaltDirOutput.ReadOnly = true;
             this._defaltDirOutput.Size = new System.Drawing.Size(454, 20);
@@ -199,7 +202,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(410, 69);
+            this.label5.Location = new System.Drawing.Point(416, 85);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(118, 13);
             this.label5.TabIndex = 12;
@@ -209,7 +212,7 @@
             // 
             this._errorInvalidDirectory.AutoSize = true;
             this._errorInvalidDirectory.ForeColor = System.Drawing.Color.Red;
-            this._errorInvalidDirectory.Location = new System.Drawing.Point(12, 144);
+            this._errorInvalidDirectory.Location = new System.Drawing.Point(12, 153);
             this._errorInvalidDirectory.Name = "_errorInvalidDirectory";
             this._errorInvalidDirectory.Size = new System.Drawing.Size(111, 13);
             this._errorInvalidDirectory.TabIndex = 13;
@@ -219,7 +222,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 166);
+            this.label6.Location = new System.Drawing.Point(12, 175);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(70, 13);
             this.label6.TabIndex = 14;
@@ -227,7 +230,7 @@
             // 
             // _crf
             // 
-            this._crf.Location = new System.Drawing.Point(88, 163);
+            this._crf.Location = new System.Drawing.Point(88, 172);
             this._crf.Name = "_crf";
             this._crf.Size = new System.Drawing.Size(89, 20);
             this._crf.TabIndex = 15;
@@ -238,7 +241,7 @@
             // 
             this._errorCrf.AutoSize = true;
             this._errorCrf.ForeColor = System.Drawing.Color.Red;
-            this._errorCrf.Location = new System.Drawing.Point(177, 166);
+            this._errorCrf.Location = new System.Drawing.Point(177, 175);
             this._errorCrf.Name = "_errorCrf";
             this._errorCrf.Size = new System.Drawing.Size(118, 13);
             this._errorCrf.TabIndex = 16;
@@ -277,7 +280,7 @@
             this._audio.AutoSize = true;
             this._audio.Checked = true;
             this._audio.CheckState = System.Windows.Forms.CheckState.Checked;
-            this._audio.Location = new System.Drawing.Point(324, 204);
+            this._audio.Location = new System.Drawing.Point(324, 226);
             this._audio.Name = "_audio";
             this._audio.Size = new System.Drawing.Size(53, 17);
             this._audio.TabIndex = 22;
@@ -346,7 +349,7 @@
             // _audioOnly
             // 
             this._audioOnly.AutoSize = true;
-            this._audioOnly.Location = new System.Drawing.Point(324, 181);
+            this._audioOnly.Location = new System.Drawing.Point(324, 203);
             this._audioOnly.Name = "_audioOnly";
             this._audioOnly.Size = new System.Drawing.Size(106, 17);
             this._audioOnly.TabIndex = 29;
@@ -400,7 +403,7 @@
             // _prev
             // 
             this._prev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._prev.Location = new System.Drawing.Point(860, 23);
+            this._prev.Location = new System.Drawing.Point(860, 56);
             this._prev.Name = "_prev";
             this._prev.Size = new System.Drawing.Size(75, 23);
             this._prev.TabIndex = 35;
@@ -411,7 +414,7 @@
             // _next
             // 
             this._next.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._next.Location = new System.Drawing.Point(942, 23);
+            this._next.Location = new System.Drawing.Point(942, 56);
             this._next.Name = "_next";
             this._next.Size = new System.Drawing.Size(75, 23);
             this._next.TabIndex = 36;
@@ -470,6 +473,42 @@
             this._interpolateFramerate.Text = "Interpolate Framerate";
             this._interpolateFramerate.UseVisualStyleBackColor = true;
             // 
+            // _startEndTime
+            // 
+            this._startEndTime.Location = new System.Drawing.Point(7, 195);
+            this._startEndTime.Name = "_startEndTime";
+            this._startEndTime.Size = new System.Drawing.Size(358, 115);
+            this._startEndTime.TabIndex = 17;
+            // 
+            // _gif
+            // 
+            this._gif.AutoSize = true;
+            this._gif.Location = new System.Drawing.Point(324, 180);
+            this._gif.Name = "_gif";
+            this._gif.Size = new System.Drawing.Size(39, 17);
+            this._gif.TabIndex = 44;
+            this._gif.Text = "Gif";
+            this._gif.UseVisualStyleBackColor = true;
+            // 
+            // _ffmpegDirectory
+            // 
+            this._ffmpegDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._ffmpegDirectory.Location = new System.Drawing.Point(12, 18);
+            this._ffmpegDirectory.Name = "_ffmpegDirectory";
+            this._ffmpegDirectory.Size = new System.Drawing.Size(842, 20);
+            this._ffmpegDirectory.TabIndex = 45;
+            this._ffmpegDirectory.Leave += new System.EventHandler(this._ffmpegDirectory_Leave);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(12, 2);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(158, 13);
+            this.label11.TabIndex = 46;
+            this.label11.Text = "FFMPEG Path (E.g: C:/ffmpeg/)";
+            // 
             // axWindowsMediaPlayer1
             // 
             this.axWindowsMediaPlayer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -482,22 +521,16 @@
             this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(484, 298);
             this.axWindowsMediaPlayer1.TabIndex = 32;
             // 
-            // _startEndTime
+            // _validFfmpegDirectory
             // 
-            this._startEndTime.Location = new System.Drawing.Point(7, 189);
-            this._startEndTime.Name = "_startEndTime";
-            this._startEndTime.Size = new System.Drawing.Size(358, 115);
-            this._startEndTime.TabIndex = 17;
-            // 
-            // _gif
-            // 
-            this._gif.AutoSize = true;
-            this._gif.Location = new System.Drawing.Point(324, 158);
-            this._gif.Name = "_gif";
-            this._gif.Size = new System.Drawing.Size(39, 17);
-            this._gif.TabIndex = 44;
-            this._gif.Text = "Gif";
-            this._gif.UseVisualStyleBackColor = true;
+            this._validFfmpegDirectory.AutoSize = true;
+            this._validFfmpegDirectory.ForeColor = System.Drawing.Color.Red;
+            this._validFfmpegDirectory.Location = new System.Drawing.Point(860, 21);
+            this._validFfmpegDirectory.Name = "_validFfmpegDirectory";
+            this._validFfmpegDirectory.Size = new System.Drawing.Size(121, 13);
+            this._validFfmpegDirectory.TabIndex = 47;
+            this._validFfmpegDirectory.Text = "Invalid Ffmpeg Directory";
+            this._validFfmpegDirectory.Visible = false;
             // 
             // Form1
             // 
@@ -505,6 +538,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1030, 549);
+            this.Controls.Add(this._validFfmpegDirectory);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this._ffmpegDirectory);
             this.Controls.Add(this._gif);
             this.Controls.Add(this._interpolateFramerate);
             this.Controls.Add(this._fps);
@@ -603,6 +639,9 @@
         private System.Windows.Forms.TextBox _fps;
         private System.Windows.Forms.CheckBox _interpolateFramerate;
         private System.Windows.Forms.CheckBox _gif;
+        private System.Windows.Forms.TextBox _ffmpegDirectory;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label _validFfmpegDirectory;
     }
 }
 
